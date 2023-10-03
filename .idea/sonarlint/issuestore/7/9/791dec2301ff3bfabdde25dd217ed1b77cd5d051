@@ -1,0 +1,8 @@
+
+4kotlin:S63104"Avoid hardcoded dispatchers.(°°ß«
+4kotlin:S63107"Avoid hardcoded dispatchers.(Éù§Ë
+9kotlin:S6310;"Avoid hardcoded dispatchers.(¾İ†¾ûÿÿÿÿ
+ikotlin:S63114"QRemove this dispatcher. It is pointless when used with only suspending functions.(°°ß«
+ikotlin:S63117"QRemove this dispatcher. It is pointless when used with only suspending functions.(Éù§Ë
+]kotlin:S6313-"EClasses extending "ViewModel" should not expose suspending functions.(æ°ã
+bkotlin:S63132"EClasses extending "ViewModel" should not expose suspending functions.(’çÄşÿÿÿÿ
