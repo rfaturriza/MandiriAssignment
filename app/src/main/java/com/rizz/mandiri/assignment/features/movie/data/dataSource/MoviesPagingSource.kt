@@ -9,7 +9,6 @@ import retrofit2.HttpException
 import java.io.IOException
 
 internal const val TMDB_STARTING_PAGE_INDEX = 1
-internal const val NETWORK_PAGE_SIZE = 20
 
 class MoviesPagingSource(
     private val api: MovieApi,
@@ -26,11 +25,11 @@ class MoviesPagingSource(
                 if (movies?.results?.isEmpty() == true) {
                     null
                 } else {
-                    pageIndex + (params.loadSize / NETWORK_PAGE_SIZE)
+                    pageIndex.plus(1)
                 }
             LoadResult.Page(
                 data = movies?.results?.map { it.toResultsMovieEntity() } ?: emptyList(),
-                prevKey = if (pageIndex == TMDB_STARTING_PAGE_INDEX) null else pageIndex,
+                prevKey = if (pageIndex == TMDB_STARTING_PAGE_INDEX) null else pageIndex.minus(1),
                 nextKey = nextKey
             )
         } catch (exception: IOException) {
