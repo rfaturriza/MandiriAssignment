@@ -32,6 +32,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale.Companion.Crop
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
@@ -167,7 +169,6 @@ private fun MovieCard(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(8.dp)
         ) {
             if (!movie.posterPath.isNullOrBlank()) {
                 Image(
@@ -176,27 +177,30 @@ private fun MovieCard(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(200.dp)
-                        .clip(shape = RoundedCornerShape(8.dp))
+                        .clip(shape = RoundedCornerShape(8.dp)),
+                    contentScale = Crop
                 )
             }
-
             Spacer(modifier = Modifier.height(8.dp))
-
-            Text(
-                text = movie.title.orEmpty(),
-                style = typography.bodyLarge,
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(4.dp))
-
-            Text(
-                text = "Release Date: ${movie.releaseDate.orEmpty()}",
-                style = typography.labelSmall,
-                modifier = Modifier
-                    .fillMaxWidth()
-            )
+                    .padding(horizontal = 8.dp)
+            ) {
+                Text(
+                    text = movie.title.orEmpty(),
+                    style = typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = movie.releaseDate.orEmpty(),
+                    style = typography.bodyLarge,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                )
+            }
         }
     }
 }
