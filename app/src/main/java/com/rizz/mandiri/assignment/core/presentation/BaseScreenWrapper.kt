@@ -20,10 +20,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
+import com.rizz.mandiri.assignment.core.utils.Constants.Companion.BUNDLE_ARG_KEY
 import com.rizz.mandiri.assignment.core.viewModel.BaseViewModel
 import com.rizz.mandiri.assignment.ui.components.LoadingDialog
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun <State, ScreenEvent> BaseScreenWrapper(
     navController: NavController,
@@ -70,7 +72,7 @@ fun <State, ScreenEvent> BaseScreenWrapper(
                     it.data?.let { data ->
                         navController.navigate(it.route)
                         navController.currentBackStackEntry?.savedStateHandle?.set(
-                            "KEY_DATA",
+                            BUNDLE_ARG_KEY,
                             data
                         )
                     } ?: navController.navigate(it.route)
@@ -85,7 +87,7 @@ fun <State, ScreenEvent> BaseScreenWrapper(
                             popUpTo(navController.graph.startDestinationId)
                         }
                         navController.currentBackStackEntry?.savedStateHandle?.set(
-                            "KEY_DATA",
+                            BUNDLE_ARG_KEY,
                             data
                         )
                     } ?: navController.navigate(it.route) {

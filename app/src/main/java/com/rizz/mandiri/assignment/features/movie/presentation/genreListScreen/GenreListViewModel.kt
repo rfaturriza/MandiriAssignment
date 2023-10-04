@@ -4,7 +4,7 @@ import com.rizz.mandiri.assignment.core.presentation.UiEvent
 import com.rizz.mandiri.assignment.core.utils.Resource
 import com.rizz.mandiri.assignment.core.viewModel.BaseViewModel
 import com.rizz.mandiri.assignment.features.movie.domain.usecases.GetGenresUseCase
-import com.rizz.mandiri.assignment.root.MovieNav
+import com.rizz.mandiri.assignment.route.MovieNav
 import dagger.hilt.android.lifecycle.HiltViewModel
 import timber.log.Timber
 import javax.inject.Inject

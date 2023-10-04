@@ -1,5 +1,8 @@
 package com.rizz.mandiri.assignment.features.movie.domain.entities
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 data class MovieEntity(
     val page: Int?,
     val results: List<MovieResultEntity>,
@@ -7,6 +10,7 @@ data class MovieEntity(
     val totalResults: Int?
 )
 
+@Parcelize
 data class MovieResultEntity(
     val id: Int?,
     val adult: Boolean?,
@@ -22,4 +26,4 @@ data class MovieResultEntity(
     val video: Boolean?,
     val voteAverage: Double?,
     val voteCount: Int?
-)
+) : Parcelable
