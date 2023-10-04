@@ -2,9 +2,9 @@ package com.rizz.mandiri.assignment.features.movie.presentation.genreListScreen
 
 import com.rizz.mandiri.assignment.features.movie.domain.entities.GenreEntity
 
-sealed interface GenreEvent {
+sealed interface GenreListEvent {
     data class NavigateToMovieList(
         val genre: GenreEntity
-    ) : GenreEvent
-    data object GetGenres : GenreEvent
+    ) : GenreListEvent
+    data object GetGenres : GenreListEvent
 }

@@ -28,11 +28,11 @@ import com.rizz.mandiri.assignment.ui.theme.MandiriAssignmentTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GenreListScreen(
-    state: GenreState,
-    onEvent: (GenreEvent) -> Unit,
+    state: GenreListState,
+    onEvent: (GenreListEvent) -> Unit,
 ) {
     LaunchedEffect(Unit) {
-        onEvent(GenreEvent.GetGenres)
+        onEvent(GenreListEvent.GetGenres)
     }
 
 
@@ -56,7 +56,7 @@ fun GenreListScreen(
         ) {
             if (!state.genresResult.first && state.genresResult.second == null) {
                 ErrorContainer {
-                    onEvent(GenreEvent.GetGenres)
+                    onEvent(GenreListEvent.GetGenres)
                 }
             } else {
                 LazyVerticalGrid(
@@ -68,7 +68,7 @@ fun GenreListScreen(
                             GenreItem(
                                 genre = genre,
                                 onClick = {
-                                    onEvent(GenreEvent.NavigateToMovieList(genre))
+                                    onEvent(GenreListEvent.NavigateToMovieList(genre))
                                 }
                             )
                         }
@@ -110,7 +110,7 @@ fun GenreItem(
 private fun LoginScreenPreview() {
     MandiriAssignmentTheme {
         GenreListScreen(
-            state = GenreState(),
+            state = GenreListState(),
             onEvent = {}
         )
     }

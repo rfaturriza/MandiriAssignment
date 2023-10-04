@@ -12,13 +12,13 @@ import javax.inject.Inject
 @HiltViewModel
 class GenreListViewModel @Inject constructor(
     private val getGenres: GetGenresUseCase,
-) : BaseViewModel<GenreState, GenreEvent>() {
-    override fun defaultState(): GenreState = GenreState()
+) : BaseViewModel<GenreListState, GenreListEvent>() {
+    override fun defaultState(): GenreListState = GenreListState()
 
-    override fun onEvent(event: GenreEvent) {
+    override fun onEvent(event: GenreListEvent) {
         when (event) {
-            is GenreEvent.GetGenres -> onGetGenres()
-            is GenreEvent.NavigateToMovieList -> sendEvent(
+            is GenreListEvent.GetGenres -> onGetGenres()
+            is GenreListEvent.NavigateToMovieList -> sendEvent(
                 UiEvent.Navigate(MovieNav.MovieList.route, event.genre)
             )
         }
