@@ -23,11 +23,11 @@ class ReviewersPagingSource(
                 if (movies?.results?.isEmpty() == true) {
                     null
                 } else {
-                    pageIndex + (params.loadSize / NETWORK_PAGE_SIZE)
+                    pageIndex.plus(1)
                 }
             LoadResult.Page(
                 data = movies?.results?.map { it.toEntity() } ?: emptyList(),
-                prevKey = if (pageIndex == TMDB_STARTING_PAGE_INDEX) null else pageIndex,
+                prevKey = if (pageIndex == TMDB_STARTING_PAGE_INDEX) null else pageIndex.minus(1),
                 nextKey = nextKey
             )
         } catch (exception: IOException) {
