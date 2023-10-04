@@ -9,7 +9,6 @@ import com.rizz.mandiri.assignment.features.movie.domain.entities.SpokenLanguage
 data class DetailMovieResponse(
     @SerializedName("adult") var adult: Boolean? = null,
     @SerializedName("backdrop_path") var backdropPath: String? = null,
-    @SerializedName("belongs_to_collection") var belongsToCollection: String? = null,
     @SerializedName("budget") var budget: Int? = null,
     @SerializedName("genres") var genres: ArrayList<Genres> = arrayListOf(),
     @SerializedName("homepage") var homepage: String? = null,
@@ -45,7 +44,7 @@ data class DetailMovieResponse(
             voteCount = voteCount,
             backdropPath = backdropPath,
             posterPath = posterPath,
-            genres = genres.map { it.name ?: "" },
+            genres = genres.map { it.toEntity() },
             productionCompanies = productionCompanies.map { it.toEntity() },
             productionCountries = productionCountries.map { it.toEntity() },
             spokenLanguages = spokenLanguages.map { it.toEntity() }

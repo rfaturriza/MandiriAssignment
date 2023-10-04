@@ -10,7 +10,7 @@ data class DetailMovieEntity(
     val voteCount: Int?,
     val backdropPath: String?,
     val posterPath: String?,
-    val genres: List<String>,
+    val genres: List<GenreEntity>,
     val productionCompanies: List<ProductionCompanyEntity>,
     val productionCountries: List<ProductionCountryEntity>,
     val spokenLanguages: List<SpokenLanguageEntity>
