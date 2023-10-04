@@ -72,7 +72,7 @@ fun <State, ScreenEvent> BaseScreenWrapper(
                     it.data?.let { data ->
                         navController.navigate(it.route)
                         navController.currentBackStackEntry?.savedStateHandle?.set(
-                            BUNDLE_ARG_KEY,
+                            it.key ?: BUNDLE_ARG_KEY,
                             data
                         )
                     } ?: navController.navigate(it.route)
@@ -87,7 +87,7 @@ fun <State, ScreenEvent> BaseScreenWrapper(
                             popUpTo(navController.graph.startDestinationId)
                         }
                         navController.currentBackStackEntry?.savedStateHandle?.set(
-                            BUNDLE_ARG_KEY,
+                            it.key ?: BUNDLE_ARG_KEY,
                             data
                         )
                     } ?: navController.navigate(it.route) {

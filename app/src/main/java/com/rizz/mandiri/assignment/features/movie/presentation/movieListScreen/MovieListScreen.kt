@@ -116,7 +116,7 @@ fun MovieListScreen(
                                 )
                             }
                         }
-                        when (movies?.loadState?.append) { // Pagination
+                        when (movies?.loadState?.append) {
                             is LoadState.Error -> {
                                 item {
                                     ErrorContainer {
@@ -125,7 +125,7 @@ fun MovieListScreen(
                                 }
                             }
 
-                            is LoadState.Loading -> { // Pagination Loading UI
+                            is LoadState.Loading -> {
                                 item {
                                     Column(
                                         modifier = Modifier
@@ -204,7 +204,7 @@ private fun MovieCard(
 
 @Preview(showBackground = true)
 @Composable
-private fun LoginScreenPreview() {
+private fun Preview() {
     MandiriAssignmentTheme {
         MovieListScreen(
             state = MovieListState(),

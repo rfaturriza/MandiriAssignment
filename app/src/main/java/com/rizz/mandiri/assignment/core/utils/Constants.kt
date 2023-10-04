@@ -2,8 +2,8 @@ package com.rizz.mandiri.assignment.core.utils
 
 class Constants {
     companion object {
-        const val DEFAULT_ERROR_MESSAGE = "Terjadi kesalahan, silahkan coba lagi"
-        const val DEFAULT_ERROR_INTERNET_MESSAGE = "Tidak ada koneksi internet"
+        const val DEFAULT_ERROR_MESSAGE = "Oops, something went wrong. Please try again"
+        const val DEFAULT_ERROR_INTERNET_MESSAGE = "Check your internet connection"
         const val BASE_URL = "https://api.themoviedb.org/3/"
         const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/original"
         const val BUNDLE_ARG_KEY = "bundle_arg_key"

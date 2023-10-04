@@ -105,7 +105,7 @@ fun GenreItem(
 
 @Preview(showBackground = true)
 @Composable
-private fun LoginScreenPreview() {
+private fun Preview() {
     MandiriAssignmentTheme {
         GenreListScreen(
             state = GenreListState(),

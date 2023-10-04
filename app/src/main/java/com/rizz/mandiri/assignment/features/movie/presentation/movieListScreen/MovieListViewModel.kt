@@ -22,7 +22,11 @@ class MovieListViewModel @Inject constructor(
             is MovieListEvent.SetGenre -> onSetGenre(event.genre)
             is MovieListEvent.GetMovies -> onGetMovies()
             is MovieListEvent.NavigateToDetail -> sendEvent(
-                UiEvent.Navigate(MovieNav.MovieDetail.route, event.movie)
+                UiEvent.Navigate(
+                    MovieNav.MovieDetail.route,
+                    event.movie,
+                    key = MovieNav.MovieDetail.route
+                )
             )
 
             is MovieListEvent.NavigateBack -> sendEvent(

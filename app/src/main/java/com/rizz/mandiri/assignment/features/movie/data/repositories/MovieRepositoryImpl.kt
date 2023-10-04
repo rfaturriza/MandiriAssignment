@@ -6,12 +6,13 @@ import androidx.paging.PagingData
 import com.rizz.mandiri.assignment.core.repository.BaseRepository
 import com.rizz.mandiri.assignment.core.utils.Resource
 import com.rizz.mandiri.assignment.features.movie.data.dataSource.MoviesPagingSource
+import com.rizz.mandiri.assignment.features.movie.data.dataSource.ReviewersPagingSource
 import com.rizz.mandiri.assignment.features.movie.data.dataSource.remote.MovieApi
 import com.rizz.mandiri.assignment.features.movie.data.model.request.MovieQuery
 import com.rizz.mandiri.assignment.features.movie.domain.entities.DetailMovieEntity
 import com.rizz.mandiri.assignment.features.movie.domain.entities.GenreEntity
 import com.rizz.mandiri.assignment.features.movie.domain.entities.MovieResultEntity
-import com.rizz.mandiri.assignment.features.movie.domain.entities.ReviewEntity
+import com.rizz.mandiri.assignment.features.movie.domain.entities.ReviewResultEntity
 import com.rizz.mandiri.assignment.features.movie.domain.entities.VideoEntity
 import com.rizz.mandiri.assignment.features.movie.domain.repositories.MovieRepository
 import kotlinx.coroutines.flow.Flow
@@ -42,12 +43,19 @@ class MovieRepositoryImpl @Inject constructor(private val api: MovieApi) : Movie
         }
     }
 
-    override suspend fun getMovieReview(movieId: Int, page: Int): Resource<ReviewEntity> {
-        return when (val res = safeApiCall { api.getReviews(movieId, page = page) }) {
-            is Resource.Success -> Resource.Success(res.data.toEntity())
-            is Resource.Error -> Resource.Error(res.message)
-            is Resource.Loading -> Resource.Loading
-        }
+    override fun getMovieReview(movieId: Int): Flow<PagingData<ReviewResultEntity>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 20,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = {
+                ReviewersPagingSource(
+                    api = api,
+                    movieId = movieId
+                )
+            }
+        ).flow
     }
 
     override suspend fun getMovieVideo(movieId: Int): Resource<VideoEntity> {

@@ -1,6 +1,5 @@
 package com.rizz.mandiri.assignment.route
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -11,8 +10,12 @@ import androidx.navigation.compose.navigation
 import com.rizz.mandiri.assignment.core.presentation.BaseScreenWrapper
 import com.rizz.mandiri.assignment.core.utils.Constants.Companion.BUNDLE_ARG_KEY
 import com.rizz.mandiri.assignment.features.movie.domain.entities.GenreEntity
+import com.rizz.mandiri.assignment.features.movie.domain.entities.MovieResultEntity
 import com.rizz.mandiri.assignment.features.movie.presentation.genreListScreen.GenreListScreen
 import com.rizz.mandiri.assignment.features.movie.presentation.genreListScreen.GenreListViewModel
+import com.rizz.mandiri.assignment.features.movie.presentation.movieDetailScreen.DetailMovieEvent
+import com.rizz.mandiri.assignment.features.movie.presentation.movieDetailScreen.DetailMovieScreen
+import com.rizz.mandiri.assignment.features.movie.presentation.movieDetailScreen.DetailMovieViewModel
 import com.rizz.mandiri.assignment.features.movie.presentation.movieListScreen.MovieListEvent
 import com.rizz.mandiri.assignment.features.movie.presentation.movieListScreen.MovieListScreen
 import com.rizz.mandiri.assignment.features.movie.presentation.movieListScreen.MovieListViewModel
@@ -48,13 +51,13 @@ fun NavGraphBuilder.movieNavigation(
             }
         }
         composable(route = MovieNav.MovieDetail.route) {
-            // TODO: Change to MovieDetailViewModel
-            val viewModel = hiltViewModel<MovieListViewModel>()
+            val savedStateHandle = navController.currentBackStackEntry?.savedStateHandle
+            val data = savedStateHandle?.get<MovieResultEntity>(MovieNav.MovieDetail.route)
+            val viewModel = hiltViewModel<DetailMovieViewModel>()
             val state by viewModel.state.collectAsState()
+            viewModel.onEvent(DetailMovieEvent.SetMovie(data))
             BaseScreenWrapper(navController = navController, viewModel = viewModel) {
-                Box() {
-                    // TODO: Add Movie Detail Screen
-                }
+                DetailMovieScreen(state = state, onEvent = viewModel::onEvent)
             }
         }
     }
