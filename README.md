@@ -6,7 +6,7 @@ Movie App is a Android Jetpack Compose project designed to provide a modern and 
 
 | Genre List | Movie List | Movie Detail | Reviews | Movie Detail YT Player |
 |----------|----------|----------|----------|----------|
-|![1](https://github.com/rfaturriza/MandiriAssignment/assets/56538058/cea60606-e1e8-4caa-b41f-790f3d787c07)|![2](https://github.com/rfaturriza/MandiriAssignment/assets/56538058/374429e3-7bd1-4aa8-ad32-f70077394721)|![3](https://github.com/rfaturriza/MandiriAssignment/assets/56538058/6dc90035-9b11-4eb3-a9eb-d8aa31cf964f)|![4](https://github.com/rfaturriza/MandiriAssignment/assets/56538058/f0024b3e-a4df-4436-aeca-af013ecdf05f)|![5](https://github.com/rfaturriza/MandiriAssignment/assets/56538058/a91e16c4-c913-4a98-ba85-2d16c29f2b0a)|
+|![1](https://github.com/rfaturriza/movie-app-jetpack-compose/assets/56538058/cea60606-e1e8-4caa-b41f-790f3d787c07)|![2](https://github.com/rfaturriza/movie-app-jetpack-compose/assets/56538058/374429e3-7bd1-4aa8-ad32-f70077394721)|![3](https://github.com/rfaturriza/movie-app-jetpack-compose/assets/56538058/6dc90035-9b11-4eb3-a9eb-d8aa31cf964f)|![4](https://github.com/rfaturriza/movie-app-jetpack-compose/assets/56538058/f0024b3e-a4df-4436-aeca-af013ecdf05f)|![5](https://github.com/rfaturriza/movie-app-jetpack-compose/assets/56538058/a91e16c4-c913-4a98-ba85-2d16c29f2b0a)|
 
 ## Tech
 - Android Kotlin
@@ -21,7 +21,7 @@ To run this project on your local machine, follow these steps:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/rfaturriza/MandiriAssignment.git
+   git clone https://github.com/rfaturriza/movie-app-jetpack-compose.git
 
 Android Studio will clone the repository to your local machine.
 
